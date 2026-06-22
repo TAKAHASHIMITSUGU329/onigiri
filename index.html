@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>おにぎりや事業計画書</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2522;
+      --muted: #64706a;
+      --line: #d9e0dc;
+      --paper: #fbfaf6;
+      --white: #ffffff;
+      --rice: #f5efe1;
+      --leaf: #2f6b4f;
+      --leaf-dark: #214d39;
+      --plum: #8e3f4b;
+      --gold: #b8852a;
+      --shadow: 0 18px 45px rgba(35, 48, 41, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", Meiryo, sans-serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(47, 107, 79, 0.09), transparent 34%),
+        linear-gradient(315deg, rgba(142, 63, 75, 0.08), transparent 30%),
+        var(--paper);
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      align-items: stretch;
+      padding: 0;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(8, 14, 12, 0.95), rgba(8, 14, 12, 0.66) 44%, rgba(8, 14, 12, 0.08) 78%),
+        linear-gradient(0deg, rgba(8, 14, 12, 0.72), rgba(8, 14, 12, 0) 44%),
+        url("assets/hero-onigiri.png") center / cover;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: grid;
+      align-content: space-between;
+      max-width: 820px;
+      min-height: inherit;
+      padding: 46px;
+    }
+
+    .hero-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+    }
+
+    .brand-mark::before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 28px;
+      border-radius: 999px;
+      background: #f3d9a2;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f3d9a2;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: clamp(3rem, 8vw, 7.4rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin-bottom: 28px;
+      font-size: clamp(1.02rem, 1.6vw, 1.22rem);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-statement {
+      max-width: 740px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-meta li {
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 0.9rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 720px;
+      margin-top: 28px;
+    }
+
+    .hero-proof div {
+      min-height: 92px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-proof strong {
+      display: block;
+      color: #f3d9a2;
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+
+    .hero-proof span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    main {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    section {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 28px rgba(35, 48, 41, 0.05);
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 1.45rem;
+      line-height: 1.35;
+    }
+
+    h2::before {
+      content: "";
+      width: 10px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--leaf);
+      flex: 0 0 auto;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      color: var(--leaf-dark);
+      font-size: 1.04rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .box {
+      min-height: 100%;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .box.accent {
+      border-color: rgba(47, 107, 79, 0.32);
+      background: linear-gradient(180deg, #ffffff, #f4f8f5);
+    }
+
+    ul,
+    ol {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    th,
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      width: 24%;
+      color: var(--leaf-dark);
+      background: #f2f6f3;
+      font-weight: 700;
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .role-list {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--plum);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .badge.support {
+      background: var(--gold);
+    }
+
+    .score-board {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .score {
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      border: 1px solid rgba(47, 107, 79, 0.28);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff, #f4f8f5);
+      text-align: center;
+    }
+
+    .score strong {
+      display: block;
+      color: var(--leaf-dark);
+      font-size: clamp(3rem, 9vw, 6.2rem);
+      line-height: 1;
+    }
+
+    .score span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .metric {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--ink);
+      font-size: 1.35rem;
+      line-height: 1.4;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .timeline li {
+      position: relative;
+      padding: 16px 18px 16px 48px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .timeline li::before {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      content: attr(data-step);
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--leaf);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--gold);
+      background: var(--rice);
+      color: #4d4538;
+    }
+
+    footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 20px, 1080px);
+        padding-top: 10px;
+      }
+
+      .hero {
+        min-height: 720px;
+        background:
+          linear-gradient(180deg, rgba(8, 14, 12, 0.9), rgba(8, 14, 12, 0.42) 48%, rgba(8, 14, 12, 0.86)),
+          url("assets/hero-onigiri.png") 62% center / cover;
+      }
+
+      .hero-content {
+        padding: 26px 20px;
+      }
+
+      .hero-topline {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-proof {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 22px 18px;
+      }
+
+      .grid,
+      .grid.three,
+      .grid.four,
+      .score-board,
+      .role-list {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        min-width: 0;
+      }
+
+      tr,
+      th,
+      td {
+        display: block;
+      }
+
+      th,
+      td {
+        width: 100%;
+      }
+
+      th {
+        border-bottom: 0;
+        padding-bottom: 6px;
+      }
+
+      td {
+        padding-top: 6px;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      section {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .hero {
+        min-height: 320px;
+        border-radius: 0;
+      }
+
+      section {
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-content">
+        <div class="hero-topline">
+          <span class="brand-mark">OSAKA ONIGIRI POP-UP</span>
+          <span>Business Plan / 2026.06.22</span>
+        </div>
+        <div class="hero-statement">
+          <p class="eyebrow">Sun Farm Nishiki Rice Project</p>
+          <h1>おにぎりや<br>事業計画書</h1>
+          <p class="lead">
+            清岡未来さんを主役に、サンファーム西木のお米を大阪の街へ。イベントと間借り営業から始める、強くてしなやかな小商いの立ち上げ計画です。
+          </p>
+          <ul class="hero-meta" aria-label="計画概要">
+            <li>主担当：清岡未来さん</li>
+            <li>運営支援：高橋貢</li>
+            <li>展開地域：大阪</li>
+            <li>仕入れ先：サンファーム西木</li>
+          </ul>
+          <div class="hero-proof" aria-label="初期計画の重要指標">
+            <div>
+              <strong>月4回</strong>
+              <span>イベント・間借り営業を定期化する初期目標</span>
+            </div>
+            <div>
+              <strong>80個</strong>
+              <span>初回販売で検証する基準数量</span>
+            </div>
+            <div>
+              <strong>60%</strong>
+              <span>商品設計で目指す粗利率</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="score">
+        <h2 id="score">0. 採点とアップデート方針</h2>
+        <div class="score-board">
+          <div class="score" aria-label="事業計画の自己採点">
+            <div>
+              <strong>92</strong>
+              <span>点 / 100点</span>
+            </div>
+          </div>
+          <div class="box">
+            <h3>満点に近づけるための改善内容</h3>
+            <ul>
+              <li>役割分担を「清岡未来さんが事業の顔、高橋貢が運営支援」として明確化</li>
+              <li>初期費用、1回あたり収支、月次モデル、損益分岐点を追加</li>
+              <li>初回販売の検証条件とKPIを明記し、感覚ではなく数字で改善できる形に更新</li>
+              <li>営業許可、食品表示、衛生管理、保険などの確認項目を追加</li>
+              <li>6か月後の到達目標を置き、イベント・間借りから定期営業へ進める道筋を具体化</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">
+          現時点で満点に残り8点としている理由は、屋号、実際の仕入れ単価、間借り先候補、初回出店日、保健所確認結果が未確定のため。ここが埋まれば、外部相談・融資相談・出店交渉にも出しやすい計画書になる。
+        </p>
+      </section>
+
+      <section aria-labelledby="concept">
+        <h2 id="concept">1. 事業コンセプト</h2>
+        <div class="grid">
+          <div class="box accent">
+            <h3>事業の核</h3>
+            <p>
+              「お米の良さがまっすぐ伝わる、手に取りやすいおにぎり」を提供する。まずは大阪市内を中心に、イベント出店や飲食店の間借り営業で小さく始め、商品力・接客・オペレーション・採算性を検証する。
+            </p>
+          </div>
+          <div class="box">
+            <h3>大切にする価値</h3>
+            <ul>
+              <li>お米の産地と作り手が伝わること</li>
+              <li>清岡未来さんの人柄と世界観が感じられること</li>
+              <li>日常にもイベントにも合う、温かみのある食体験にすること</li>
+              <li>無理なく続けられる利益設計と運営体制にすること</li>
+              <li>売上より先に、再購入される理由を作ること</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="overview">
+        <h2 id="overview">2. 事業概要</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th>事業内容</th>
+                <td>おにぎりの製造・販売。イベント出店、マルシェ、ポップアップ、飲食店やカフェでの間借り営業を中心に展開。</td>
+              </tr>
+              <tr>
+                <th>販売エリア</th>
+                <td>初期は大阪市内および大阪近郊。人通り・イベント密度・間借り先との相性を見ながら出店エリアを絞り込む。</td>
+              </tr>
+              <tr>
+                <th>主要仕入れ</th>
+                <td>お米はサンファーム西木から仕入れる。品質、産地ストーリー、安定供給、価格条件を確認しながら継続取引を目指す。</td>
+              </tr>
+              <tr>
+                <th>初期販売形態</th>
+                <td>イベント・間借り営業を中心に、固定店舗を持たず低コストで開始する。実績が出た段階で定期営業日や常設化を検討。</td>
+              </tr>
+              <tr>
+                <th>主な顧客</th>
+                <td>大阪で働く人、イベント来場者、健康志向の人、手軽で質のよい昼食を求める人、地域性や作り手の背景に共感する人。</td>
+              </tr>
+              <tr>
+                <th>初期目標</th>
+                <td>3か月で累計10回出店、累計販売800個、平均廃棄率5%以下、Instagramフォロワー300人、リピート購入率20%以上を目指す。</td>
+              </tr>
+              <tr>
+                <th>6か月後の目標</th>
+                <td>月4回以上の定期出店、月商20万円、粗利率55%以上、固定の間借り先1か所以上、法人・イベント受注の問い合わせ導線を作る。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="roles">
+        <h2 id="roles">3. 役割分担</h2>
+        <div class="role-list">
+          <div class="box accent">
+            <span class="badge">Main</span>
+            <h3>清岡未来さん：事業の顔・主担当</h3>
+            <ul>
+              <li>商品企画、味の方向性、メニュー決定</li>
+              <li>接客、販売現場でのブランド表現</li>
+              <li>SNS発信、ファンづくり、世界観づくり</li>
+              <li>間借り先・イベント主催者との関係構築</li>
+            </ul>
+          </div>
+          <div class="box">
+            <span class="badge support">Support</span>
+            <h3>高橋貢：フォロー・運営支援</h3>
+            <ul>
+              <li>事業計画、収支管理、原価計算の補助</li>
+              <li>仕入れ・出店条件の確認</li>
+              <li>販売現場のサポート、搬入・設営補助</li>
+              <li>改善点の整理、次回アクションの管理</li>
+              <li>清岡未来さんが商品・接客・発信に集中できる環境づくり</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="products">
+        <h2 id="products">4. 商品計画</h2>
+        <div class="grid three">
+          <div class="box">
+            <h3>定番商品</h3>
+            <ul>
+              <li>塩むすび</li>
+              <li>鮭</li>
+              <li>梅</li>
+              <li>昆布</li>
+              <li>ツナマヨ</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>差別化商品</h3>
+            <ul>
+              <li>季節野菜のおにぎり</li>
+              <li>大阪らしい具材の限定品</li>
+              <li>サンファーム西木のお米を味わうシンプル商品</li>
+              <li>イベント限定セット</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>価格イメージ</h3>
+            <ul>
+              <li>定番：280円から330円</li>
+              <li>限定：350円から480円</li>
+              <li>2個セット：650円から850円</li>
+              <li>味噌汁・お茶セット：プラス200円から350円</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">
+          初期は品数を絞り、売れ筋・廃棄・仕込み時間を検証する。まずは定番4種類と限定1種類程度で始め、平均単価350円、1回80個販売を最初の基準値にする。
+        </p>
+      </section>
+
+      <section aria-labelledby="market">
+        <h2 id="market">5. 販売戦略</h2>
+        <div class="grid">
+          <div class="box">
+            <h3>初期チャネル</h3>
+            <ul>
+              <li>大阪市内のマルシェ、地域イベント、音楽・カルチャーイベント</li>
+              <li>カフェ、バー、シェアキッチンでの間借り営業</li>
+              <li>ランチ需要のあるオフィス街での短時間販売</li>
+              <li>SNSで予約を受ける小規模受注販売</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>集客方針</h3>
+            <ul>
+              <li>Instagramを中心に、出店日・メニュー・仕込み風景を発信</li>
+              <li>清岡未来さんの言葉で、なぜこのお米を使うのかを伝える</li>
+              <li>出店先との共同告知で初回来店のきっかけを作る</li>
+              <li>購入者の感想を次回販売や商品改善に活かす</li>
+              <li>販売後24時間以内に、売れ筋・完売時間・顧客の声をSNSで振り返る</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="operations">
+        <h2 id="operations">6. オペレーション計画</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th>仕入れ</th>
+                <td>サンファーム西木からお米を仕入れ、使用量・保管方法・発注リードタイムを管理する。具材は品質と原価のバランスを見て選定。</td>
+              </tr>
+              <tr>
+                <th>製造</th>
+                <td>営業許可のあるキッチンまたは間借り先の設備条件を確認し、衛生管理、温度管理、表示ルールを整える。</td>
+              </tr>
+              <tr>
+                <th>販売</th>
+                <td>販売数は初回30から80個程度でテストし、イベント規模や滞在時間に応じて調整する。売り切りを基本に廃棄を抑える。</td>
+              </tr>
+              <tr>
+                <th>管理</th>
+                <td>販売数、売上、原価、廃棄、人気商品、顧客反応を毎回記録する。次回の仕込み数と価格改定の判断材料にする。</td>
+              </tr>
+              <tr>
+                <th>衛生・許認可</th>
+                <td>販売形態ごとに必要な営業許可、食品衛生責任者、表示ラベル、アレルゲン表示、温度管理、製造場所の条件を事前に確認する。</td>
+              </tr>
+              <tr>
+                <th>品質基準</th>
+                <td>提供から食べるまでの想定時間を決め、時間経過後の食味、包装の湿気、米の硬さ、具材のにじみを試作段階で確認する。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="finance">
+        <h2 id="finance">7. 収支計画</h2>
+        <div class="grid three">
+          <div class="box">
+            <h3>初期費用</h3>
+            <ul>
+              <li>調理器具・保温容器：50,000円</li>
+              <li>包装資材・ラベル：25,000円</li>
+              <li>ショップカード・メニュー表：20,000円</li>
+              <li>出店料・キッチン利用の前払い：40,000円</li>
+              <li>予備費：30,000円</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>1回あたり売上モデル</h3>
+            <ul>
+              <li>販売数：80個</li>
+              <li>平均単価：350円</li>
+              <li>想定売上：28,000円</li>
+              <li>材料・包材原価：11,200円</li>
+              <li>粗利：16,800円</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>月次モデル</h3>
+            <ul>
+              <li>出店回数：月4回</li>
+              <li>月間販売数：320個</li>
+              <li>月商：112,000円</li>
+              <li>月間粗利：67,200円</li>
+              <li>出店料・交通費差引後の営業利益目標：35,000円以上</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">
+          損益分岐の目安は、1回あたり固定費を8,000円、粗利率60%とした場合、売上約13,400円。平均単価350円なら39個で固定費を回収できる。正式な原価計算では、お米の仕入れ単価、具材費、包材費、出店料、交通費、キッチン利用料、人件費相当を分けて管理する。
+        </p>
+      </section>
+
+      <section aria-labelledby="kpi">
+        <h2 id="kpi">8. 検証KPI</h2>
+        <div class="grid four">
+          <div class="box">
+            <p class="metric"><strong>80個</strong>初回の販売目標</p>
+          </div>
+          <div class="box">
+            <p class="metric"><strong>5%以下</strong>廃棄率の目標</p>
+          </div>
+          <div class="box">
+            <p class="metric"><strong>60%以上</strong>粗利率の目標</p>
+          </div>
+          <div class="box">
+            <p class="metric"><strong>20%以上</strong>リピート・紹介率の目標</p>
+          </div>
+        </div>
+        <p class="note">
+          初回から3回目までは、利益最大化より検証を優先する。販売開始から完売までの時間、時間帯別の売れ行き、SNS経由の来店数、購入者の一言コメントを記録し、4回目以降の商品数と価格に反映する。
+        </p>
+      </section>
+
+      <section aria-labelledby="roadmap">
+        <h2 id="roadmap">9. 立ち上げロードマップ</h2>
+        <ol class="timeline">
+          <li data-step="1">
+            <h3>準備期間：1から2週間</h3>
+            <p>サンファーム西木との仕入れ条件確認、試作、原価計算、屋号・ロゴ・SNSアカウント・販売備品の準備を行う。高橋貢が収支表と出店候補リストを作成する。</p>
+          </li>
+          <li data-step="2">
+            <h3>テスト販売：1か月目</h3>
+            <p>小規模イベントまたは間借り営業で販売。80個を基準に始め、売れ筋、価格、仕込み量、現場導線を検証する。</p>
+          </li>
+          <li data-step="3">
+            <h3>改善・定期化：2から3か月目</h3>
+            <p>反応のよい商品に絞り、月2から4回の出店を目指す。告知テンプレート、仕込み手順、収支管理表を整える。</p>
+          </li>
+          <li data-step="4">
+            <h3>拡張判断：4か月目以降</h3>
+            <p>固定の間借り曜日、法人向け軽食受注、イベント出店拡大、常設店舗の可能性を数字と体力面から判断する。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="risks">
+        <h2 id="risks">10. リスクと対策</h2>
+        <div class="grid">
+          <div class="box">
+            <h3>主なリスク</h3>
+            <ul>
+              <li>出店場所によって売上が大きく変動する</li>
+              <li>仕込み過多による廃棄が発生する</li>
+              <li>衛生管理・営業許可・表示ルールの確認不足</li>
+              <li>清岡未来さんに業務が集中しすぎる</li>
+              <li>仕入れ単価や出店料が上がり、利益が残りにくくなる</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>対策</h3>
+            <ul>
+              <li>最初は少量販売と予約販売を組み合わせる</li>
+              <li>毎回の販売データを残し、仕込み量を調整する</li>
+              <li>保健所、間借り先、イベント主催者に必要条件を事前確認する</li>
+              <li>高橋貢が事務・数字・現場補助を担い、清岡さんが商品と接客に集中できる状態を作る</li>
+              <li>商品ごとの原価率を毎回確認し、利益率の低いメニューは価格または具材量を調整する</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="next">
+        <h2 id="next">11. 直近のアクション</h2>
+        <div class="grid three">
+          <div class="box">
+            <h3>今週</h3>
+            <ul>
+              <li>屋号候補を3案出す</li>
+              <li>お米の仕入れ条件を確認する</li>
+              <li>試作メニューを5品決める</li>
+              <li>初期費用165,000円以内で備品リストを作る</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>次回打ち合わせ</h3>
+            <ul>
+              <li>役割分担を確定する</li>
+              <li>初回出店候補を選ぶ</li>
+              <li>販売価格と目標個数を決める</li>
+              <li>清岡未来さん、高橋貢それぞれの稼働可能日を確認する</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>初回販売まで</h3>
+            <ul>
+              <li>営業許可とキッチン条件を確認</li>
+              <li>包材と備品を購入</li>
+              <li>SNSで告知を開始</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      おにぎりや事業計画書 / Draft for discussion
+    </footer>
+  </div>
+</body>
+</html>
